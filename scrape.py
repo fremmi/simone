@@ -3,6 +3,7 @@ import xmltodict
 import dicttoxml
 
 import requests
+import json
 
 
 def parse_line(line):
@@ -29,11 +30,12 @@ def main():
 
         if code != None and url != None:
             r = requests.get(url, auth=requests.auth.HTTPBasicAuth("1-W26813", "H1dYhvsCIlfi1RsbuiWt"))
-            print("status: {} / text: {}".format(r.status_code, r.text))
+            # print("status: {} / text: {}".format(r.status_code, r.text))
             if len(r.text):
                 dict[code] = xmltodict.parse(r.text)
 
-    o.write(dicttoxml.dicttoxml(dict))
+    print(json.dumps(dict))
+    # o.write(dicttoxml.dicttoxml(dict))
 
 if __name__ == "__main__":
     main()
