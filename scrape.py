@@ -29,7 +29,7 @@ def main():
 
         if code != None and url != None:
             r = requests.get(url, auth=requests.auth.HTTPBasicAuth("1-W26813", "H1dYhvsCIlfi1RsbuiWt"))
-            # print("SUCUNI {}".format(r.status_code))
+            print("status: {} / text: {}".format(r.status_code, r.text))
             if len(r.text):
                 dict[code] = xmltodict.parse(r.text)
 
