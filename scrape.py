@@ -23,11 +23,11 @@ def create_csv(dict) :
         catmerc = dict[key]["root"]["scheda"]["catmerc"]
         descrizione = dict[key]["root"]["scheda"]["descrizione"]
 
-        line += codiceproduttore + ";" + ean + ";" + catmerc + ";" + descrizione + ";"
+        line += codiceproduttore + "|" + ean + "|" + catmerc + "|" + descrizione + "|"
 
         for block_dict in dict[key]["root"]["quickinfo"]["titolo"]:
             block_descrizione = "@" + block_dict["descrizione"] + "@"
-            line += block_descrizione + ";"
+            line += block_descrizione + "|"
             for elem in block_dict["quick"]:
                 for k in elem:
                     if k == "descrizione":
@@ -36,7 +36,7 @@ def create_csv(dict) :
                         elem_valore = elem[k]
 
 
-                line += elem_descrizione + ";" + elem_valore
+                line += elem_descrizione + "|" + elem_valore
 
         csv += line + "\n"
         return csv
