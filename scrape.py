@@ -16,6 +16,7 @@ def parse_line(line):
 
 def create_csv(dict) :
     csv = ""
+    sep = "|"
     for key in dict:
         line = ""
         codiceproduttore = dict[key]["root"]["scheda"]["codiceproduttore"]
@@ -23,11 +24,11 @@ def create_csv(dict) :
         catmerc = dict[key]["root"]["scheda"]["catmerc"]
         descrizione = dict[key]["root"]["scheda"]["descrizione"]
 
-        line += codiceproduttore + "|" + ean + "|" + catmerc + "|" + descrizione + "|"
+        line += codiceproduttore + sep + ean + sep + catmerc + sep + descrizione + sep
 
         for block_dict in dict[key]["root"]["quickinfo"]["titolo"]:
             block_descrizione = "@" + block_dict["descrizione"] + "@"
-            line += block_descrizione + "|"
+            line += block_descrizione + sep
             for elem in block_dict["quick"]:
                 for k in elem:
                     if k == "descrizione":
@@ -36,7 +37,7 @@ def create_csv(dict) :
                         elem_valore = elem[k]
 
 
-                line += elem_descrizione + "|" + elem_valore
+                line += elem_descrizione + sep + elem_valore + sep
 
         csv += line + "\n"
         return csv
