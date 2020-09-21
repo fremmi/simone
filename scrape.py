@@ -54,6 +54,7 @@ def main():
     dict = {}
     f = open(link_file, "r+")
     o = open(output_file, "w+")
+    url_count = 0
     for line in f:
         if line.__contains__("Column") or line == None:
             continue
@@ -64,6 +65,7 @@ def main():
             # print("status: {} / text: {}".format(r.status_code, r.text))
             if len(r.text):
                 dict[code] = xmltodict.parse(r.text)
+                url_count ++
             else:
                 print("Error getting url {}".format(url))
 
@@ -71,6 +73,7 @@ def main():
     # o.write(dicttoxml.dicttoxml(dict))
     csv = create_csv(dict)
     o.write(csv)
+    print("Analyzed {} urls".format(url_count))
     # print(csv)
 
 
