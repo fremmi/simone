@@ -11,6 +11,7 @@ def parse_line(line):
     if len(data) >= 3:
         return data[0], data[2]
     else:
+        print("Could not parse line {}".format(line))
         return None, None
 
 
@@ -63,6 +64,8 @@ def main():
             # print("status: {} / text: {}".format(r.status_code, r.text))
             if len(r.text):
                 dict[code] = xmltodict.parse(r.text)
+            else
+                print("Error getting url {}".format(url))
 
     # print(json.dumps(dict))
     # o.write(dicttoxml.dicttoxml(dict))
