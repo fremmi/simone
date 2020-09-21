@@ -68,7 +68,7 @@ def main():
     # o.write(dicttoxml.dicttoxml(dict))
     csv = create_csv(dict)
     o.write(csv)
-    print(csv)
+    # print(csv)
 
 
 if __name__ == "__main__":
