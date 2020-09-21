@@ -29,9 +29,10 @@ def create_csv(dict) :
             block_descrizione = "@" + block_dict["descrizione"] + "@"
             line += block_descrizione + ";"
             for elem in block_dict["quick"]:
-                elem_descizione = elem["descrizione"]
-                elem_valore = elem["valore"]
-                line += elem_descizione + ";" + elem_valore
+                print(elem)
+                # elem_descrizione = elem["descrizione"]
+                # elem_valore = elem["valore"]
+                # line += elem_descrizione + ";" + elem_valore
 
         csv += line + "\n"
 
