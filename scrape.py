@@ -13,6 +13,29 @@ def parse_line(line):
     else:
         return None, None
 
+
+def create_csv(dict) :
+    csv = ""
+    for key in dict:
+        line = ""
+        codiceproduttore = dict[key]["root"]["scheda"]["codiceproduttore"]
+        ean = dict[key]["root"]["scheda"]["ean"]
+        catmerc = dict[key]["root"]["scheda"]["catmerc"]
+        descrizione = dict[key]["root"]["scheda"]["descrizione"]
+
+        line += codiceproduttore + ";" + ean + ";" + catmerc + ";" + descrizione + ";"
+
+        for block_dict in dict[key]["root"]["scheda"]["quickinfo"]["titolo"]:
+            block_descrizione = "@" + block_dict["descrizione"] + "@"
+            line += block_descrizione + ";"
+            for elem in block_dict["quick"]:
+                elem_descizione = elem["descrizione"]
+                elem_valore = elem["valore"]
+                line += elem_descizione + ";" + elem_valore
+
+        csv += line + "\n"
+
+
 def main():
     if len(sys.argv) < 3:
         print ("Usage: scrape link_file output_file")
@@ -34,8 +57,12 @@ def main():
             if len(r.text):
                 dict[code] = xmltodict.parse(r.text)
 
-    print(json.dumps(dict))
+    # print(json.dumps(dict))
     # o.write(dicttoxml.dicttoxml(dict))
+    csv = create_csv(dict)
+    o.write(csv)
+    print(csv)
+
 
 if __name__ == "__main__":
     main()
