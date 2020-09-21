@@ -64,7 +64,7 @@ def main():
             # print("status: {} / text: {}".format(r.status_code, r.text))
             if len(r.text):
                 dict[code] = xmltodict.parse(r.text)
-            else
+            else:
                 print("Error getting url {}".format(url))
 
     # print(json.dumps(dict))
