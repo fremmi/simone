@@ -25,7 +25,7 @@ def create_csv(dict) :
 
         line += codiceproduttore + ";" + ean + ";" + catmerc + ";" + descrizione + ";"
 
-        for block_dict in dict[key]["root"]["scheda"]["quickinfo"]["titolo"]:
+        for block_dict in dict[key]["root"]["quickinfo"]["titolo"]:
             block_descrizione = "@" + block_dict["descrizione"] + "@"
             line += block_descrizione + ";"
             for elem in block_dict["quick"]:
