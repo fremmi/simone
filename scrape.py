@@ -39,6 +39,7 @@ def create_csv(dict) :
                 line += elem_descrizione + ";" + elem_valore
 
         csv += line + "\n"
+        return csv
 
 
 def main():
