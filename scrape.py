@@ -40,7 +40,7 @@ def create_csv(dict) :
 
                 line += elem_descrizione + sep + elem_valore + sep
 
-        csv += line + "\n"
+        csv += line + '\n'
         return csv
 
 
