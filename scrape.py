@@ -32,6 +32,9 @@ def create_csv(dict) :
         if codiceproduttore == None or catmerc == None:
             continue
 
+        if ean == None:
+            ean = " "
+
         line += codiceproduttore + sep + ean + sep + catmerc + sep + descrizione + sep
 
         for block_dict in dict[key]["root"]["quickinfo"]["titolo"]:
