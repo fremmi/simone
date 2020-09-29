@@ -27,7 +27,7 @@ def create_csv(dict) :
         codiceproduttore = dict[key]["root"]["scheda"]["codiceproduttore"]
         ean = dict[key]["root"]["scheda"]["ean"]
         catmerc = dict[key]["root"]["scheda"]["catmerc"]
-        descrizione = dict[key]["root"]["scheda"]["descrizione"].replace("\r\n", " ")
+        descrizione = dict[key]["root"]["scheda"]["descrizione"].replace('\r\n', " ")
 
         if codiceproduttore == None or ean ==None or catmerc == None:
             continue
@@ -41,7 +41,7 @@ def create_csv(dict) :
                     if k == "descrizione":
                         elem_descrizione = elem[k]
                     elif k == "valore":
-                        elem_valore = elem[k].replace("\r\n"," ")
+                        elem_valore = elem[k].replace('\r\n'," ")
 
 
                 line += elem_descrizione + sep + elem_valore + sep
