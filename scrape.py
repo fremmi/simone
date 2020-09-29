@@ -21,7 +21,7 @@ def create_csv(dict) :
     for key in dict:
         line = ""
         if not 'scheda' in dict[key]["root"]:
-            print("Key 'scheda' not found in dict")
+            print("Key 'scheda' not found in dict ")
             continue
 
         codiceproduttore = dict[key]["root"]["scheda"]["codiceproduttore"]
@@ -67,7 +67,8 @@ def main():
     for line in f:
         if line.__contains__("Column") or line == None:
             continue
-        code, url = parse_line(line)
+        code, url_code = parse_line(line)
+        url = "http://it.esprinet.com/schedeServizioDati/?" + url_code
 
         if code != None and url != None:
             r = requests.get(url, auth=requests.auth.HTTPBasicAuth("1-W26813", "H1dYhvsCIlfi1RsbuiWt"))
