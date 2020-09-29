@@ -8,8 +8,8 @@ import json
 
 def parse_line(line):
     data = line.split(";")
-    if len(data) >= 3:
-        return data[0], data[2]
+    if len(data) >= 2:
+        return data[0], data[1]
     else:
         print("Could not parse line {}".format(line))
         return None, None
