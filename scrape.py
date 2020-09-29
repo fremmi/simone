@@ -20,6 +20,10 @@ def create_csv(dict) :
     sep = "|"
     for key in dict:
         line = ""
+        if not 'scheda' in dict[key]["root"]:
+            print("Key 'scheda' not found in dict")
+            continue
+            
         codiceproduttore = dict[key]["root"]["scheda"]["codiceproduttore"]
         ean = dict[key]["root"]["scheda"]["ean"]
         catmerc = dict[key]["root"]["scheda"]["catmerc"]
